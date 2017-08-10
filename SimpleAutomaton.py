@@ -40,3 +40,9 @@ def mypadding(a, style):
             }
     func = selector.get(style, "nothing")
     return func(a)
+
+''' next up: implement the individual automoton operations:
+    *check previous row n-1, n, n+1
+    *determin new value
+    *add next row
+'''
