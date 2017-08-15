@@ -78,8 +78,12 @@ def nextcell(rule):
         return func
     return getcell
 
-def draw_cells(rule, size_x, size_y, padding_style):
-    start = mybits(size_x)
+def draw_cells(rule, basis='centered', size_x=65, size_y=65, padding_style='zeros'):
+    if (basis == 'random'):
+        start = mybits(size_x)
+    else:
+        start = np.zeros(size_x)
+        start[int(size_x/2)] = 1
     print('starting array: {}'.format(start))
     print('length: {}'.format(len(start)))
     print('padded: {}'.format(mypadding(start, padding_style)))
@@ -99,7 +103,8 @@ def draw_cells(rule, size_x, size_y, padding_style):
     #fig_size = [6, 6]
     #plt.figure(figsize=fig_size)
     plt.show
-draw_cells(84, 32, 32, 'mirror')
+
+draw_cells(30)
    
 '''
 Seems like a lot of time/operations wasted going to/from strings
