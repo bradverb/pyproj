@@ -78,6 +78,12 @@ def nextcell(rule):
         return func
     return getcell
 
+
+'''
+Note: Not sure the starting point and/or rules match the usual notation.
+Definitely works and generates the desired plots, but the rule numbers don't 
+seem to match convention. TBD what's up with that.
+'''
 def draw_cells(rule, basis='centered', size_x=65, size_y=65, padding_style='zeros'):
     if (basis == 'random'):
         start = mybits(size_x)
@@ -98,6 +104,7 @@ def draw_cells(rule, basis='centered', size_x=65, size_y=65, padding_style='zero
             #print('first bits in row: {}.'.format(bits[(y-1), (x-1):(x+2)]))
             bits[y, x] = cell_func(bits[(y-1), (x-1):(x+2)])
         bits[y, :] = mypadding(bits[y, 1:-1], padding_style)
+    
     plt.imshow(bits[:, 1:-2])
     plt.xticks([]), plt.yticks([])
     #fig_size = [6, 6]
