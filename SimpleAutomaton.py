@@ -62,14 +62,15 @@ def nextcell(rule):
     print('binrule: {}'.format(binrule))
     def getcell(previous_cells):
         selector = {
-                '000': binrule[0],
-                '001': binrule[1],
-                '010': binrule[2],
-                '011': binrule[3],
-                '100': binrule[4],
-                '101': binrule[5],
-                '110': binrule[6],
-                '111': binrule[7],
+                #Note LSB is at the far right of the string
+                '000': binrule[7],
+                '001': binrule[6],
+                '010': binrule[5],
+                '011': binrule[4],
+                '100': binrule[3],
+                '101': binrule[2],
+                '110': binrule[1],
+                '111': binrule[0],
                 }
         func = selector.get(np.array2string(previous_cells, separator='')[1:4], "nothing")
         #print('binrule: {}'.format(binrule))
@@ -78,12 +79,6 @@ def nextcell(rule):
         return func
     return getcell
 
-
-'''
-Note: Not sure the starting point and/or rules match the usual notation.
-Definitely works and generates the desired plots, but the rule numbers don't 
-seem to match convention. TBD what's up with that.
-'''
 def draw_cells(rule, basis='centered', size_x=65, size_y=65, padding_style='zeros'):
     if (basis == 'random'):
         start = mybits(size_x)
